@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+        
+        /*
+            
+            Peça ao usuário para informar um número MAIOR QUE 1000.
+            Utilize do..while para garantir que foi informado um número válido
+            e maior que 1000.
+
+            Em seguida, usando o loop while, imprima com document.write() 
+            todos os números múltiplos de 13 ou de 23 existentes entre 1 e 
+            o número informado.
+
+        */
+       let num, aux = 1
+
+       do {
+            num = Number(prompt('Digite um numero maior que 1000:'))
+
+            
+        
+       } while(num < 1000)
+
+       while(aux < num){
+           if (aux % 13 == 0||aux % 23 == 0){
+               document.write(`${aux}.`)
+               
+           }
+         aux++
+       }
+       
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
