@@ -23,6 +23,38 @@
             FEVEREIRO: 28 dias (29 em anos bissextos)
         */
 
+               // let mes = parseInt(prompt('Informe o número de um mês (de 1 a 12):'))
+
+        let mes
+        do {
+            do {
+                mes = parseInt(prompt('Informe o número de um mês (de 1 a 12, ou 0 para terminar):'))
+            } while(isNaN(mes) || mes < 0 || mes > 12)
+
+            switch(mes) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    alert('O mês informado tem 31 dias.')
+                    break
+
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    alert('O mês informado tem 30 dias.')
+                    break
+
+                case 2: 
+                    alert('O mês informado tem 28 dias (ou 29 em anos bissextos).')
+                    break
+
+            }
+        } while(mes > 0) // O programa termina quando o usuário digitar 0
     </script>
 </head>
 <body>
