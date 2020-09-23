@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    
+</head>
+<body>
+    <h1>Titulo da pagina</h1>
+    <p>Isto é um paragrafo</p>
+    <ul>
+        <li>Primeiro Item</li>
+        <li>Segundo Item</li>
+        <li>Terceiro Item</li>
+    </ul>
+    <script>
+
+     // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+    'use strict'
+
+    const cabec = document.querySelector('h1') // retorna o primeiro elemento do seu tipo
+    cabec.innerHTML = 'Manipulando o document Object Model (DOM)'// alterando o texto do elemento
+    
+    
+    // alterando o texto do segundo item
+
+    const itens = document.querySelectorAll('li') // captura todos os elementos
+    // em javascript primeiro elemento é o 0
+
+    itens[1].innerHTML = 'Segundo item alterado'
+    
+    const itens2 = document.getElementsByTagName('li')
+    itens2[2].innerHTML = 'TERCEIRO ITEM ALTERADO'
+
+    const elemIntruso = document.getElementById('Intruso')
+    elemIntruso.innerHTML = 'sou um intruso'
+    
+
+
+    
+    </script>
+</body>
+</html>
