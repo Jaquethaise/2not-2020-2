@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+    <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+        
+        let i, num    // declaração de variável
+
+        for(i = 1; i <= 400; i++){  // Está percorrendo do 1 ao 400 para definir onde será inserido as lombofaixas
+            if(i % 29 == 0){        // usei o % para definir os números divisores de 29, para determinar onde seria cada lombofaixa
+                document.write(i + " km <br/>") 
+            }
+        }
+        do{
+            num = Number(prompt('Digite uma kilometragem:')) // o prompt está aí para capturar um numero inteiro
+        } while(isNaN(num) || num < 1 || num > 400) // verificar se o número é inteiro e se está dentro da faixa determinada
+
+        switch(num) { // Uso do switch para determinar qual numero foi inserido e mostrar se algo na km fornecida
+            case 97:
+            case 177:
+            case 291:
+            case 388:
+                document.write('Existe uma Megaloja do Magazine Luiza!')
+                break
+            case 153:
+            case 356:
+                document.write('Existe um Drive-Thru dos calçados Rafarillo!') 
+                break
+            case 187:
+                document.write('Existe um posto de recarga da viação São José!')
+                break
+            case 210:
+                document.write('Existe uma filial da padaria Estrela &#9055;')
+                break
+            case 314:
+                document.write('Existe uma fabrica do Jubileu do Amendoim!')
+                break
+            case 367: 
+                document.write('Existe uma Franca AcquaParque unidade II!')
+                break
+           
+            default: // Caso o numero inserido não seja igual a nenhum dos cases, aparecerá essa frase
+                document.write("Vapo, tem nada aqui não. Segue reto toda vida, meu fii")
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
