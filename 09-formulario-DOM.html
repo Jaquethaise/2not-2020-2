@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de documento HTML</title>
+</head>
+<body>
+    <h1>Formulário de cálculo de preços</h1>
+    
+    <!-- label e input são elementos inline (ou em linha) -->
+    <!-- div é um elemento de bloco -->
+    <div>
+        <label>Nome do produto</label>
+        <input size="50">
+    </div>
+
+    <div>
+        <label>Quantidade</label>
+        <input id="qtd" type="number" min="1" max="10">
+    </div>
+
+    <div>
+        <label>Preço unitário</label>
+        <input id="preco_unit" type="number" step="0.01" min="0.01">
+    </div>
+
+    <div>
+        <label>PREÇO TOTAL</label>
+        <span id="resultado"></span>
+    </div>
+    
+    <script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+        
+        let elemQtd = document.querySelector('#qtd')    // Forma moderna
+        let elemPrecoUnit = document.getElementById('preco_unit')   // Forma trad.
+        let elemResultado = document.querySelector('#resultado')
+
+        function calcular() {
+            let quantidade = parseFloat(elemQtd.value)      // Forma trad.
+            let precoUnit = Number(elemPrecoUnit.value)     // Forma moderna
+            let resultado
+
+            // Caso AMBOS os números tenham passado na validação
+            if(!isNaN(quantidade) && !isNaN(precoUnit)) {
+                elemResultado.innerText = (quantidade * precoUnit).toFixed(2) // 2 casas decimais
+            }
+            else {
+                elemResultado.innerText = ''
+            }
+        }
+
+        // change: o valor do input mudou (só detectável após sair do elemento)
+        elemQtd.addEventListener('change', calcular)
+        elemPrecoUnit.addEventListener('change', calcular)
+
+        // keyup: uma tecla foi pressionada e liberada
+        elemQtd.addEventListener('keyup', calcular)
+        elemPrecoUnit.addEventListener('keyup', calcular)
+                
+    </script>
+</body>
+</html>

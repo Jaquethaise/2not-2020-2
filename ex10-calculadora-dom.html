@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+</head>
+<body>
+    <div>
+        <label> Insira o primeiro numero:  </label>
+        <input id="num1" type="number">
+    </div>
+    
+    <div>
+        <label>Operadores</label>
+        <select id="operador">
+            <option>(Selecione)</option>
+            <option>Soma</option>
+            <option>Subtração</option>
+            <option>Multiplicação</option>
+            <option>Divisão</option>
+            <option>Potenciação</option>
+            <option>Resto da divisão</option>
+        </select>   
+    </div>
+
+
+    <div>
+        <label>Insira o segundo numero:</label>
+        <input id="num2" type="number">
+    </div>
+
+    <fieldset>
+        <legend>Resultado</legend>
+        <div id="resultado"> </div>
+    </fieldset>
+
+    <div>
+        <button id="calcular">Calcular</button>
+    </div>
+</body>
+
+<script>
+        // 'use strict' impede que variáveis sejam declaradas
+        // sem o uso de let, var ou const
+        // Inicializar variáveis diretamente é má prática de
+        // programação
+        'use strict'
+    
+        /* 
+
+            Monte um formulário com os seguintes campos:
+            * Primeiro número (input numérico)
+            * Operação aritmética (select, com as opções de soma, subtração,
+                multiplicação, divisão, potenciação e resto da divisão)
+            * Segundo número (input numérico)
+            * Div para exibição do resultado da operação aritmética
+            * Botão "calcular"
+
+            Validações:
+            * Os campos de número devem estar preenchidos e com números válidos
+            * Deve ter sido selecionada uma operação artimética válida
+
+        */
+        const num1 = document.getElementById('num1')
+        const num2 = document.getElementById('num2')
+        const operador = document.getElementById('operador')
+        const resultado = document.getElementById('resultado')
+        const calcular = document.getElementById('calcular')                                                    
+        
+        
+        function validar() {
+            alert(num1)
+            let valido = true
+            
+    
+            if(isNaN(num1.value)) {
+                alert('O primeiro número deve ser válido.')
+                num1.focus() 
+                valido = false
+            }
+            else if(isNaN(num2.value)) {
+                alert('O segundo número deve ser válido.')
+                num2.focus()
+                valido = false
+            }
+            else if(operador.selectedIndex <= 0) {
+                alert('Escolha um Operador válido.')
+                operador.focus()
+                valido = false
+            }
+            
+            return valido
+        }
+
+        function calculo(){
+            if(validar()){
+
+                switch(operador.selectedIndex) {
+                    case 1:
+                        resultado.innerHTML = parseInt(num1.value) + parseInt(num2.value)
+                        break
+                    case 2:
+                        resultado.innerHTML = parseInt(num1.value) - parseInt(num2.value)
+                        break
+                    case 3:
+                        resultado.innerHTML = parseInt(num1.value) * parseInt(num2.value) 
+                        break
+                    case 4:
+                        resultado.innerHTML = parseInt(num1.value) / parseInt(num2.value) 
+                        break
+                    case 5:
+                        resultado.innerHTML = Math.pow(parseInt(num1.value), parseInt(num2.value)) 
+                        break
+                    case 6:
+                        resultado.innerHTML = parseInt(num1.value) % parseInt(num2.value) 
+                        break
+                
+                    default:
+                        resultado.innerHTML = 'Não foi possível concluir sua operação'
+
+                }
+
+            }
+            
+        }
+
+        calcular.addEventListener('click', calculo)
+
+    </script>
+
+</html>
