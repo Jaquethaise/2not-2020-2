@@ -3,34 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Gerar Padrão de Texto</title>
+    
+
+
+</head>
+<body>
+    <div>
+      <label>Insira um caractere</label>
+      <input type="text" name="caractere" id="caractere" maxlength="1">
+    </div>
+    <br/>
+
+    <div>
+      <label>Insira a quantidade de vezes que será exibido o padrão</label>
+      <input type="text" name="num" id="num" min="1" max="100">
+    </div>
+    <br/>
+
+    <div>
+        <button id="gerar_padrao">Gerar Padrão</button>
+    </div> 
+    <br/>
+
+    <div id="padrao_gerado"></div>
+
     <script>
+    
         // 'use strict' impede que variáveis sejam declaradas
         // sem o uso de let, var ou const
         // Inicializar variáveis diretamente é má prática de
         // programação
-        'use strict'
-    
         /* 
-
             Monte um formulário com os seguintes campos:
             * Um input de texto que aceite apenas 1 (um caractere)
             * Um input numérico que aceite números inteiros entre 1 e 100
             * Uma div para exibição do resultado
             * Botão "Gerar padrão"
-
             Validações:
             * Deve ser informado um caractere (não pode ser o espaço em branco)
             * Deve ter informado um número entre 1 e 100
-
             Ao clicar o botão "Gerar padrão", deverá ser exibido na div de
             resultado um padrão de texto conforme o exemplo abaixo:
-
             Se o caractere informado for * e o número selecionado for 11, serão
             geradas 11 linhas de padrão de texto, a primeira linha contendo
             uma vez o caractere, a segunda linha contendo o caractere duas
             vezes, e assim por diante:
-
             *
             **
             ***
@@ -43,22 +61,42 @@
             **********
             ***********
         */
+        'use strict'
+        
+        const caractere = document.querySelector('#caractere')
+        const num = document.querySelector('#num')
+        const botao_gerar = document.querySelector('#gerar_padrao')
+        const padrao = document.querySelector('#padrao_gerado')
+
+        function validar() {
+            let valido = true
+        
+            if (caractere.value == '') {
+                alert('Insira um caractere')
+                valido = false
+            } else if (isNaN(num.value) || num.value < 1 || num.value > 100) {
+                alert('Insira um número de 1 a 100')
+                valido = false
+            }
+            return valido
+        }
+        function gerarPadrao() {
+            if (validar()) {             
+                let padrao_incial = ''
+                let i = 1
+                do {
+                    padrao_incial = padrao_incial + '<br/>' + caractere.value.repeat(i)
+                    i = i + 1
+                } while (i <= parseInt(num.value))
+
+
+            padrao.innerHTML = padrao_incial
+
+            }
+        }
+        botao_gerar.addEventListener('click', gerarPadrao)   
+
 
     </script>
-
-<!--[if gte mso 9]><xml>
-<mso:CustomDocumentProperties>
-<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
-<mso:Order msdt:dt="string">176900.000000000</mso:Order>
-<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
-<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">FAUSTO GONCALVES CINTRA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
-<mso:ContentTypeId msdt:dt="string">0x010100D1709B3E936BE4488A7EEB682FDD8227</mso:ContentTypeId>
-<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
-<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
-</mso:CustomDocumentProperties>
-</xml><![endif]-->
-</head>
-<body>
-    
 </body>
-</html>
+</html> 
